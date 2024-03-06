@@ -1,0 +1,79 @@
+---
+name: Bug in Top Interview 150 Questions "Jump Game" 1 0f the test Case
+about: Test case showing Wrong Result Then It should Be
+title: "Jump Game Bug Report"
+labels: ''
+assignees: ''
+
+---
+
+<!--
+Note - I was trying to submit the code but its showing wrong result even though its right. The Test case Expected result is wrong.
+-->
+
+### LeetCode Username : amanmanmode
+
+
+### Problem number, title, and link
+<!-- Example    
+1. Two Sum https://leetcode.com/problems/two-sum/
+-->
+55. Jump Game https://leetcode.com/problems/jump-game/description/
+
+
+### Category of the bug
+- [*] Incorrect test Case *(Output of test case is incorrect as per the problem statement)*
+
+
+### Description of the bug
+Problem Statement : You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+Return true if you can reach the last index, or false otherwise.
+
+nums = [5,9,3,2,1,0,2,3,3,1,0,0] this was the Input Test Case.
+Expected Output showing "True" but as per the problem statement it should be false.
+
+
+### Language used for code
+C#
+
+
+### Code used for Submit/Run operation
+
+```
+public class Solution {
+    public bool CanJump(int[] nums) {
+        if(nums.Length == 1)
+            return true;
+        if(nums[0] == 0)
+            return false;
+        int newStart = 0;
+        for(int i = 0; i < nums.Length; )
+        {    
+            if((i + nums[i]) >= nums.Length - 1)
+                return true;
+            int maxJump = 0;
+            for(int j = i + nums[i]; j > i; j--){
+                if(j + nums[j] >= nums.Length - 1)
+                    return true;
+                if(nums[j + nums[j]] > 0 && maxJump < j + nums[j]){
+                    maxJump = j + nums[j];
+                }
+                    
+            }
+            if(maxJump == 0)
+                return false;
+            else
+                i = maxJump;
+        }
+        return false;
+    }
+}
+```
+
+
+### Expected behavior
+The Output of The Input Test Case mentioned in " Description of the bug" Should be 'False' as per the Problem Statement becasue it it can't reach the last index.
+
+
+### Screenshots
+I was not able to paste Screenshot here. Let me know how to do it. So next time I can add the screenshots as well.
